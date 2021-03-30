@@ -16,4 +16,4 @@ A proper code editor will save you a ton of time and help you write better code.
 1. Download [Sublime Text](https://www.sublimetext.com/3)
 2. Install the software as you normally do on your OS.
 3. Be sure you can run the Package Installer as documented [here](https://packagecontrol.io/installation).
-4. 
+4. I recommend installing the following packages (use the instructions above): SideBarEnhancements, SublimeLinter, and SublimeLinter-flake8. These will be optional but might help if you’re new to Python. 
