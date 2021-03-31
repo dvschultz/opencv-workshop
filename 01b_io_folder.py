@@ -40,6 +40,8 @@ def main():
     if os.path.isdir(args.input):
         #process folder
         files = os.listdir(args.input)
+
+        #loop thru all files in folder
         for file in files:
             #load file
             img = cv2.imread(os.path.join(args.input,file))  
