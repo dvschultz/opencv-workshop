@@ -53,7 +53,7 @@ def main():
     else:
         #process image
         img = cv2.imread(args.input)
-        cv2.imwrite(args.output, img, [cv2.IMWRITE_PNG_COMPRESSION, 0])
+        save_image(img, out_path, file, args.file_extension)
 
 
 
