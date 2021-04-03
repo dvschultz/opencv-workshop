@@ -19,7 +19,7 @@ def parse_args():
 
     parser.add_argument('-p','--process', type=str,
         default='resize',
-        help='resize, crop, or pad (default: %(default)s)')
+        help='resize, crop, pad, or canny (default: %(default)s)')
 
     parser.add_argument('--scale', type=float,
         default=1.0,
@@ -43,6 +43,8 @@ def process(img, filename, args):
         crop(img, filename, args)
     elif args.process=='pad':
         pad(img, filename, args)
+    elif args.process=='canny':
+        canny(img, filename, args)
 
 def resize(img, filename, args):
     (h, w) = img.shape[:2]
@@ -74,6 +76,22 @@ def pad(img, filename, args):
 
     padded_img = cv2.copyMakeBorder(img, 100, 100, 100, 100, bType, value=c)
     save_image(padded_img, args.output, filename, args.file_extension)
+
+def canny(img, filename, args):
+    #turn our image grayscale
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    #save_image(gray, args.output, filename+'-gray', args.file_extension)
+
+    blurred = cv2.GaussianBlur(gray, (5,5), 0)
+    #save_image(blurred, args.output, filename+'-blurred', args.file_extension)
+
+    canny = cv2.Canny(blurred,50,150)
+    save_image(canny, args.output, filename+'-canny', args.file_extension)
+
+    #maybe invert these values to look like drawings?
+    # inverse = 255-canny
+    # save_image(inverse, args.output, filename+'-inverse', args.file_extension)
+
 
 def save_image(img,path,filename,ext):
     if(ext == "png"):
