@@ -1,6 +1,3 @@
-import argparse
-import cv2
-
 def main():
 	#code goes here
 
